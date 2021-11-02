@@ -26,6 +26,25 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+#Added by Nick
+
+gem 'mini_racer'
+  
+group :development, :test do
+  gem 'rspec-rails', '~> 3.7'
+end
+
+
+# Ask about
+#group :development, :test do
+#  gem 'capybara'
+#end
+
+
+gem 'simplecov', require: false
+
+
+
 group :production do
   gem 'pg', '~> 0.21' # for Heroku deployment
   gem 'rails_12factor'
