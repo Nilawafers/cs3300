@@ -7,7 +7,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <ul class="nav navbar-nav navbar-right"> #later for bootstrap maybe
+    <ul class="nav navbar-nav navbar-right"> 
       <% if student_signed_in? %>
         <li><%= link_to current_student.email, edit_student_registration_path %></li>
         <li><%= link_to "Logout", destroy_student_session_path %></li>
