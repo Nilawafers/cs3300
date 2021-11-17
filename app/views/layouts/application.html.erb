@@ -7,9 +7,30 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <ul class="nav navbar-nav navbar-right"> #later for bootstrap maybe
+      <% if student_signed_in? %>
+        <li><%= link_to current_student.email, edit_student_registration_path %></li>
+        <li><%= link_to "Logout", destroy_student_session_path %></li>
+      <% else %>
+        <li><%= link_to "Sign Up", new_student_registration_path %></li>
+        <li><%= link_to "Log In", new_student_session_path %></li>
+      <% end %>
+      </ul>
+
+    
+
   </head>
 
   <body>
+  <% if notice %>
+    <p class="alert alert-success"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p class="alert alert-danger"><%= alert %></p>
+  <% end %>
+
+
+
     <%= yield %>
   </body>
 </html>
