@@ -95,3 +95,9 @@ group :test do
   # Might be other lines here, so simply add after them
   gem 'factory_bot_rails'
 end
+
+
+gem 'bootstrap', '~> 4.6.1'
+
+
+gem 'jquery-rails'

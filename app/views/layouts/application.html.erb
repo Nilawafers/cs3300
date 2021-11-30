@@ -7,19 +7,12 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <ul class="nav navbar-nav navbar-right"> 
-      <% if student_signed_in? %>
-        <li><%= link_to current_student.email, edit_student_registration_path %></li>
-        <li><%= link_to "Logout", destroy_student_session_path %></li>
-      <% else %>
-        <li><%= link_to "Sign Up", new_student_registration_path %></li>
-        <li><%= link_to "Log In", new_student_session_path %></li>
-      <% end %>
-      </ul>
+    
 
     
 
   </head>
+
 
   <body>
   <% if notice %>
@@ -28,8 +21,60 @@
   <% if alert %>
     <p class="alert alert-danger"><%= alert %></p>
   <% end %>
+  <header>
+      <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6 col-md-6 py-4">
+              <h4 class="text-white">About Me</h4>
+              <p class="text-muted">I'm a computer engineering graduate from UCCS! I have a passion for technology and progress. Currently, I am pursuing a masters to work with and innovate on VR and AR devices. I want to be a part of the future and I know I can help shape it through work in these technologies. Deep learning, AI, embedded systems, and quantum computing are some of my other areas of current major intrest.</p>
+            </div>
+            <div class="col-sm-4 offset-md-2 py-4">
+              <h4 class="text-white">Contact Me</h4>
+              <ul class="list-unstyled">
+                <li class="text-white">Nbuckleyce@gmail.com</li>
+                <li><a href="https://github.com/Nilawafers" class="text-white">My Github</a></li>
+                <li class="text-white">Xbox GT Nilafacekiller ;D</li>
+              </ul>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+          <a href="/" class="navbar-brand d-flex align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M20 9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9"/><path d="M9 22V12h6v10M2 10.6L12 2l10 8.6"/></svg>
+            <strong>Home</strong>
+          </a>
+
+          <ul class="nav nav-pills" >
+            <% if student_signed_in? %>
+              <li class="nav-item active"  style="text-shadow: 1px 1px black;">
+                <a class="nav-link" style="color: white;" href="/students/edit">Account</a>
+              </li>
+              <li class="nav-item active"  style="text-shadow: 1px 1px black;">
+                <a class="nav-link" style="color: white;" href="/students/sign_out">Sign Out</a>
+              </li>
+              
+            <% else %>
+              <li class="nav-item active"  style="text-shadow: 1px 1px black;">
+                <a class="nav-link" style="color: white;" href="/students/sign_up">Sign Up</a>
+              </li>
+              <li class="nav-item active"  style="text-shadow: 1px 1px black;">
+                <a class="nav-link" style="color: white;" href="/students/sign_in">Sign In</a>
+              </li>
+            <% end %>
+          </ul>
 
 
+          
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
+  </header>
 
     <%= yield %>
   </body>

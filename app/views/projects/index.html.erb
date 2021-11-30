@@ -1,29 +1,69 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Projects</h1>
+<div class="jumbotron" style="background-color:white;margin-bottom:0%;padding-bottom:0px">
+<div class="container">
+    <h1 class="display-5 ">Welcome to Nicholas Buckley's portfolio site!</h1>
+    <p>Here anyone can see projects postered and account owners can add, edit, or delete any project they want. Thanks for stopping by today!</p>
+</div>
+</div>
+
+<center><h2>Projects</h2></center>
+
 
 <table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
   <tbody>
-    <% @projects.each do |project| %>
-      <tr>
-        <td><%= project.title %></td>
-        <td><%= project.description %></td>
-        <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <div class="Projects py-5 bg-light">
+        <div class="container">
+
+          <div class="row">
+            
+            
+          
+            <% @projects.each do |project| %>
+              
+              <div class="col-md-4">
+                <div class="card mb-4 box-shadow text-center">
+                  <div class="card-header"> <%= project.title %> </div>
+                  <div class="card-body">
+                    <p  class="card-text text-truncate" > <%= project.description %></p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <%= link_to "<button type='button' class='btn btn-sm btn-outline-secondary'>Show</button>".html_safe, project %>
+                        <% if student_signed_in? %>
+                          <a  href=<%= edit_project_path(project) %> >
+                            <button type="button" class="btn btn-sm btn-outline-secondary" >Edit</button>
+                          </a>
+                          <%= link_to "<button type='button' class='btn btn-sm btn-outline-secondary'>Destroy</button>".html_safe, project, method: :delete, data: { confirm: 'Are you sure?' } %>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            <% end %>
+            <% if student_signed_in? %>
+              <div class="col-md-4">
+                <div class="card mb-4 box-shadow text-center" >
+                  <div class="card-header">{Project Title}</div>
+                  <div class="card-body">
+                    <p class="card-text">{Project Description}</p>
+                    <div class="d-flex  align-items-center">
+                    
+                      <%= link_to "<button type='button' class='btn btn-sm btn-outline-secondary'>Create New Project</button>".html_safe, new_project_path %>
+                    
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Project', new_project_path %>
